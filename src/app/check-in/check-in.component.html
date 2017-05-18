@@ -3,9 +3,9 @@
 </div>
 <div class="checkin">
     姓名<br>
-    <input type="text" name="name"><br>
+    <input type="text" #name><br>
     手机号<br>
-    <input type="text" name="cellphone"><br>
-    <input class="submit" type="submit" value="签到">
+    <input type="text" #cellphone><br>
+    <input class="submit" type="submit" value="签到" (click)="add(name.value, cellphone.value)">
 </div>
 

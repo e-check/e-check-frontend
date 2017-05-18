@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckInComponent } from './check-in/check-in.component';
 
+import { CheckInService } from './check-in/check-in.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,7 @@ import { CheckInComponent } from './check-in/check-in.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [],
+  providers: [CheckInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

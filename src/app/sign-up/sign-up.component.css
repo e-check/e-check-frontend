@@ -1,0 +1,19 @@
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.signup {
+    position: absolute;
+    background: #30a9fa;
+    top: 450px;
+    left: 36%;
+    width: 140px;
+    height: 40px;
+    text-align: center;
+}
+
+a {
+    line-height: 40px;
+    color: #fff;
+}

@@ -2,6 +2,6 @@
 
 rm -rf /var/www/html/*
 
-/app/node_modules/@angular/cli/bin/ng build prod --output-path /var/www/html
+./node_modules/@angular/cli/bin/ng build -prod --output-path /var/www/html
 
 exec nginx -g 'daemon off;'

@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CheckInComponent } from './check-in/check-in.component';
 
-import { CheckInService } from './check-in/check-in.service'
+import { CheckInService } from './check-in/check-in.service';
+import { CheckInResultComponent } from './check-in-result/check-in-result.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CheckInComponent
+    CheckInComponent,
+    CheckInResultComponent
   ],
   imports: [
     BrowserModule,

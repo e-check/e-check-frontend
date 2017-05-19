@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from "@angular/http";
+import {environment} from 'environments/environment'
 
 import 'rxjs/add/operator/toPromise';
 
@@ -7,7 +8,7 @@ import 'rxjs/add/operator/toPromise';
 export class CheckInService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private checkinUrl = 'http://localhost:3000/checkin';  // URL to web api
+  private checkinUrl = environment.checkinUrl;  // URL to web api
 
   constructor(private http: Http) {
   }

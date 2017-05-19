@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CheckInService} from "./check-in.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-check-in',
@@ -11,19 +11,20 @@ export class CheckInComponent implements OnInit {
 
   constructor(
     private checkinService: CheckInService,
-    private route: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
   add(name: string, cellphone: string): void {
-    var form_id = this.route.snapshot.queryParams["form_id"];
+    var form_id = this.activateRoute.snapshot.queryParams["form_id"];
 
     name = name.trim();
     cellphone = cellphone.trim();
-
     this.checkinService.create(form_id, name, cellphone)
+      .then(data => {this.router.navigate(['/checkinresult'])});
       // .then(data => {
       //   this.checkIfUserSignedUp(name,cellphone);
       // });

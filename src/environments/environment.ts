@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  checkinUrl: 'http://localhost:3000/checkin'
+  baseCheckinUrl: 'http://localhost:3000/',
 };

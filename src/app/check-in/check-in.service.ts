@@ -8,8 +8,8 @@ import 'rxjs/add/operator/toPromise';
 export class CheckInService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private checkinUrl = environment.checkinUrl;  // URL to web api
-
+  private checkinUrl = environment.baseCheckinUrl+'checkin';  // URL to web api
+  private checkIfSignupUrl = environment.baseCheckinUrl;
   constructor(private http: Http) {
   }
 
@@ -27,8 +27,16 @@ export class CheckInService {
       .catch(this.handleError);
   }
 
-  getFormEntry(form_id: string, cellphone: string) {
+  getFormEntry(form_id: string, cellphone: string): Promise<any>  {
+    var checkIfSignupUrl = this.checkIfSignupUrl + 'forms/'+form_id+'/entries/'+cellphone;
+    var json_data = {
+      "form_id": form_id,
+      "cellphone": cellphone
+    }
 
+    return this.http
+      .get(checkIfSignupUrl, { headers: this.headers})
+      .toPromise();
   }
 
   private handleError(error: any): Promise<any> {

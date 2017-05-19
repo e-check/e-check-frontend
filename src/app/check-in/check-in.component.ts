@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CheckInService} from "./check-in.service";
+import { CheckInService } from "./check-in.service";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ['./check-in.component.css']
 })
 export class CheckInComponent implements OnInit {
-
   constructor(
     private checkinService: CheckInService,
     private activateRoute: ActivatedRoute,
@@ -23,18 +22,17 @@ export class CheckInComponent implements OnInit {
 
     name = name.trim();
     cellphone = cellphone.trim();
-    this.checkinService.create(form_id, name, cellphone)
-      .then(data => {this.router.navigate(['/checkinresult'])});
-      // .then(data => {
-      //   this.checkIfUserSignedUp(name,cellphone);
-      // });
+    this.checkinService
+      .create(form_id, name, cellphone)
+      .then(this.checkIfUserSignedUp.bind(this))
   }
 
-  // checkIfUserSignedUp(form_id: string, cellphone: string){
-  //   this.checkinService.getFormEntry(form_id, cellphone)
-  //     .then(checkin => {
-  //       this.checkins.push(checkin);
-  //     }).catch(){
-  //   }
-  // }
+  checkIfUserSignedUp(data) {
+    var form_id = data['form_id']
+    var cellphone = data['cellphone']
+    this.checkinService
+      .getFormEntry(form_id, cellphone)
+      .then(data => this.router.navigate(['/checkinresult']))
+      .catch(data => this.router.navigate(['/signup']))
+  }
 }

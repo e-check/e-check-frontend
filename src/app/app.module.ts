@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { CheckInComponent } from './check-in/check-in.component';
 
 import { CheckInService } from './check-in/check-in.service';
-import { CheckInResultComponent } from './check-in-result/check-in-result.component'
+import { CheckInResultComponent } from './check-in-result/check-in-result.component';
+import { SignUpComponent } from './sign-up/sign-up.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckInComponent,
-    CheckInResultComponent
+    CheckInResultComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

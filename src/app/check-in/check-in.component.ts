@@ -18,20 +18,27 @@ export class CheckInComponent implements OnInit {
   }
 
   add(name: string, cellphone: string): void {
-    var form_id = this.activateRoute.snapshot.queryParams["form_id"];
+    var activity_id = this.activateRoute.snapshot.queryParams["activity_id"];
 
     name = name.trim();
     cellphone = cellphone.trim();
     this.checkinService
-      .create(form_id, name, cellphone)
+      .create(activity_id, name, cellphone)
       .then(this.checkIfUserSignedUp.bind(this))
+      .catch(this.handleCheckinException)
+  }
+
+  handleCheckinException(error: any){
+    if(error.status == 400){
+      alert('您已经签过到了')
+    }
   }
 
   checkIfUserSignedUp(data) {
-    var form_id = data['form_id']
+    var activity_id = data['activity_id']
     var cellphone = data['cellphone']
     this.checkinService
-      .getFormEntry(form_id, cellphone)
+      .getFormEntry(activity_id, cellphone)
       .then(data => this.router.navigate(['/checkinresult']))
       .catch(data => this.router.navigate(['/signup']))
   }

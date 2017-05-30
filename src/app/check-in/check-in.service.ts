@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from "@angular/http";
-import {environment} from 'environments/environment'
+import { environment } from 'environments/environment'
 
 import 'rxjs/add/operator/toPromise';
 
@@ -8,34 +8,28 @@ import 'rxjs/add/operator/toPromise';
 export class CheckInService {
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
-  private checkinUrl = environment.baseCheckinUrl+'checkin';  // URL to web api
+  private checkinUrl = environment.baseCheckinUrl + 'attendances';  // URL to web api
   private checkIfSignupUrl = environment.baseCheckinUrl;
   constructor(private http: Http) {
   }
 
-  create(form_id: string, name: string, cellphone: string): Promise<any> {
+  create(activity_id: string, name: string, cellphone: string): Promise<any> {
     var json_data = {
-      "form_id": form_id,
+      "activity_id": activity_id,
       "name": name,
       "cellphone": cellphone
     }
 
     return this.http
-      .post(this.checkinUrl, JSON.stringify(json_data), {headers: this.headers})
+      .post(this.checkinUrl, JSON.stringify(json_data), { headers: this.headers })
       .toPromise()
       .then(res => res.json())
-      .catch(this.handleError);
   }
 
-  getFormEntry(form_id: string, cellphone: string): Promise<any>  {
-    var checkIfSignupUrl = this.checkIfSignupUrl + 'forms/'+form_id+'/entries/'+cellphone;
-    var json_data = {
-      "form_id": form_id,
-      "cellphone": cellphone
-    }
-
+  getFormEntry(activity_id: string, cellphone: string): Promise<any> {
+    var checkIfSignupUrl = this.checkIfSignupUrl + 'activities/' + activity_id + '/people/' + cellphone;
     return this.http
-      .get(checkIfSignupUrl, { headers: this.headers})
+      .get(checkIfSignupUrl, { headers: this.headers })
       .toPromise();
   }
 

@@ -8,16 +8,25 @@ input {
   margin-bottom: 10px;
   margin-top: 10px;
   border: 1px solid #000000 ;
+  border-radius: 10px;
 }
 
-.submit {
+input.submit {
   margin-top: 20px;
   background: #30A9FA;
   border: none;
   color: #ffffff;
   font-size: 20px;
+  height: 40px;
 }
 .checkin {
   width: 270px;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 500px) {
+    input {
+      width: 270px;
+      font-size: 16px;
+    }
 }

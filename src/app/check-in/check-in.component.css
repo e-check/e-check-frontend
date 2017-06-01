@@ -18,6 +18,7 @@ input.submit {
   color: #ffffff;
   font-size: 20px;
   height: 40px;
+  -webkit-appearance: none;
 }
 .checkin {
   width: 270px;

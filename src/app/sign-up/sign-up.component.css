@@ -1,13 +1,13 @@
-img {
-    width: 100%;
-    height: 100%;
+#sign-up_body{
+    background-image: url('/assets/images/check-failed.png');
+    height: 750px;
+    background-size: cover;
+    
 }
 
 .signup {
-    position: absolute;
     background: #30a9fa;
-    top: 450px;
-    left: 36%;
+    margin: 0px auto auto auto;
     width: 140px;
     height: 40px;
     text-align: center;

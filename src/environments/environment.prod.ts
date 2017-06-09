@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseCheckinUrl: 'http://api.ec.chatops.in/'
+  baseCheckinUrl: 'http://ec.chatops.in/api/'
 };

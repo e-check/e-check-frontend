@@ -14,7 +14,13 @@ export class CheckInComponent implements OnInit {
     private router: Router
   ) { }
 
+  activity_name: String;
+
   ngOnInit() {
+    var activity_id = this.activateRoute.snapshot.queryParams["activity_id"];
+    this.checkinService
+      .getActivity(activity_id)
+      .then(activity => this.activity_name = activity.name)
   }
 
   add(name: string, cellphone: string): void {
